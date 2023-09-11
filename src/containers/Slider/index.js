@@ -12,10 +12,11 @@ const Slider = () => {
   );
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
   };
+  /* Ajoute -1 à length pour ne boucler une fois dans le vide */
   useEffect(() => {
     nextCard();
   });
