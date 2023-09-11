@@ -15,11 +15,17 @@ const Select = ({
 }) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
+  // const changeValue = (newValue) => {
+  //   onChange();
+  //   setValue(newValue);
+  //   setCollapsed(newValue);
+  // };
   const changeValue = (newValue) => {
-    onChange();
-    setValue(newValue);
-    setCollapsed(newValue);
+    setValue(newValue); // Mettre à jour la valeur sélectionnée en premier
+    setCollapsed(true); // Fermer la liste déroulante
+    onChange(newValue); // Appeler la fonction onChange avec la nouvelle valeur
   };
+  // console.log(value);
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
@@ -88,7 +94,7 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
 Select.defaultProps = {
   onChange: () => null,
@@ -96,6 +102,6 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
-}
+};
 
 export default Select;
