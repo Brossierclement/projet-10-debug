@@ -12,7 +12,13 @@ const DataContext = createContext({});
 export const api = {
   loadData: async () => {
     const json = await fetch("/events.json");
-    return json.json();
+    /* Permet de définir last dans DataContext */
+    const data = await json.json();
+    console.log(data);
+    const last = data.events.at(-1);
+    console.log({ ...data, last });
+    return { ...data, last };
+    // return json.json();
   },
 };
 
@@ -29,8 +35,8 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     if (data) return;
     getData();
-  });
-  
+  }, []);
+
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -46,7 +52,7 @@ export const DataProvider = ({ children }) => {
 
 DataProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export const useData = () => useContext(DataContext);
 
