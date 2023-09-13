@@ -10,7 +10,6 @@ const mockContactApi = () =>
   });
 
 const Form = ({ onSuccess, onError }) => {
-  console.log(onSuccess);
   const [sending, setSending] = useState(false);
   const sendContact = useCallback(
     async (evt) => {
