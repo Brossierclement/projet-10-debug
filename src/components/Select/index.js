@@ -25,7 +25,6 @@ const Select = ({
     setCollapsed(true); // Fermer la liste déroulante
     onChange(newValue); // Appeler la fonction onChange avec la nouvelle valeur
   };
-  // console.log(value);
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}

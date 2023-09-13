@@ -14,9 +14,7 @@ export const api = {
     const json = await fetch("/events.json");
     /* Permet de définir last dans DataContext */
     const data = await json.json();
-    console.log(data);
     const last = data.events.at(-1);
-    console.log({ ...data, last });
     return { ...data, last };
     // return json.json();
   },

@@ -22,7 +22,6 @@ const Page = () => {
   const [last, setLast] = useState({});
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    console.log(data);
     if (data) {
       setLast(data.last);
       setReady(true);
