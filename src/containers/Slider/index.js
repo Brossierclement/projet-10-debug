@@ -11,21 +11,43 @@ const Slider = () => {
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
 
+  const [spaceBarPressed, setSpaceBarPressed] = useState(false);
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setSliderPosition((prevIndex) =>
-        prevIndex < sliderItems.length - 1 ? prevIndex + 1 : 0
-      );
-    }, 3000);
+      if (!spaceBarPressed) {
+        setSliderPosition((prevIndex) =>
+          prevIndex < sliderItems.length - 1 ? prevIndex + 1 : 0
+        );
+      }
+    }, 7000);
 
     return () => {
       clearInterval(timer);
     };
-  }, [sliderItems]);
+  }, [sliderItems, spaceBarPressed]);
 
   const goToSlide = (slideIndex) => {
     setSliderPosition(slideIndex);
   };
+
+  const handleSpaceBarDown = () => {
+    setSpaceBarPressed(true);
+  };
+
+  const handleSpaceBarUp = () => {
+    setSpaceBarPressed(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleSpaceBarDown);
+    window.addEventListener("keyup", handleSpaceBarUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleSpaceBarDown);
+      window.removeEventListener("keyup", handleSpaceBarUp);
+    };
+  }, []);
   return (
     <div className="SlideCardList">
       {sliderItems?.map((element) => (
@@ -53,6 +75,8 @@ const Slider = () => {
                   name="radio-button"
                   checked={item.id === sliderPosition}
                   onChange={() => goToSlide(item.id)}
+                  onClick={() => goToSlide(item.id)}
+                  // className={item.id === sliderPosition ? "selected" : ""}
                 />
               ))}
             </div>

@@ -1,5 +1,12 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {
+  fireEvent,
+  getByTestId,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import Home from "./index";
+import Page from "./index";
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -26,17 +33,44 @@ describe("When Form is created", () => {
   });
 });
 
-// describe("When a page is created", () => {
-//   it("a list of events is displayed", () => {
-//     // to implement
-//   });
-//   it("a list a people is displayed", () => {
-//     // to implement
-//   });
-//   it("a footer is displayed", () => {
-//     // to implement
-//   });
-//   it("an event card, with the last event, is displayed", () => {
-//     // to implement
-//   });
-// });
+describe("When a page is created", () => {
+  // it("a list of events is displayed", () => {
+  // });
+
+  // - - - - - - - - - -
+
+  it("a list a people is displayed", async () => {
+    render(<Page />);
+
+    await waitFor(() => {
+      const parent = screen.getByTestId("peopleListContainer");
+      expect(parent.children.length).toEqual(6);
+      // boucle sur les enfants pour vérifier s'ils ont tous la bonne classe
+    });
+  });
+
+  // - - - - - - - - - -
+
+  it("a footer is displayed", () => {
+    render(<Home />);
+    const networks = screen.getByTestId("networks");
+    expect(networks.children).toHaveLength(4);
+  });
+
+  // - - - - - - - - - -
+
+  it("an event card, with the last event, is displayed", () => {
+    const lastEvent = {
+      cover: "/images/stem-list-EVgsAbL51Rk-unsplash.png",
+      title: "Conférence #productCON",
+      date: "2022-04-29T20:28:45.744Z",
+    };
+
+    render(<Page last={lastEvent} />);
+
+    waitFor(() => {
+      const lastEventCardElement = screen.getByTestId("last-event-card");
+      expect(lastEventCardElement).toBeInTheDocument();
+    });
+  });
+});

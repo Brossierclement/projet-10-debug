@@ -38,6 +38,10 @@
         height: 16px;
         min-width: 0;
         color: $primary;
+        cursor: pointer;
+        // .selected {
+        //   color: $primary;
+        // }
       }
     }
     &__description {
