@@ -15,10 +15,10 @@ const Form = ({ onSuccess, onError }) => {
     async (evt) => {
       evt.preventDefault();
       setSending(true);
-      // We try to call mockContactApi
+      // J'essai d'appeller mockContactApi
       try {
         await mockContactApi();
-        /* Ajout de onSuccess pour qu'elle s'exécute si le message est envoyé. */
+        // Ajout de onSuccess pour qu'elle s'exécute si le message est envoyé.
         onSuccess();
         // setSending(false);
       } catch (err) {
@@ -35,8 +35,8 @@ const Form = ({ onSuccess, onError }) => {
     <form onSubmit={sendContact}>
       <div className="row">
         <div className="col">
-          <Field placeholder="" label="Nom" />
-          <Field placeholder="" label="Prénom" />
+          <Field data-testid="name" id="nom" placeholder="" label="Nom" />
+          <Field data-testid="surname" placeholder="" label="Prénom" />
           <Select
             selection={["Personel", "Entreprise"]}
             onChange={() => null}
@@ -44,7 +44,7 @@ const Form = ({ onSuccess, onError }) => {
             type="large"
             titleEmpty
           />
-          <Field placeholder="" label="Email" />
+          <Field data-testid="email" placeholder="" label="Email" />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
             {/* <Button type={"submit"} disabled={sending}> */}
             {sending ? "En cours" : "Envoyer"}
@@ -52,6 +52,7 @@ const Form = ({ onSuccess, onError }) => {
         </div>
         <div className="col">
           <Field
+            data-testid="userMessage"
             placeholder="message"
             label="Message"
             type={FIELD_TYPES.TEXTAREA}

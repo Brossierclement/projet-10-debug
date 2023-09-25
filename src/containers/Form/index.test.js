@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  getByText,
+} from "@testing-library/react";
 import Form from "./index";
 
 describe("When Events is created", () => {
@@ -33,3 +39,35 @@ describe("When Events is created", () => {
     });
   });
 });
+
+// - - - - - - - - - - Intégration
+
+// describe("Form Component", () => {
+//   it("should submit the form successfully", () => {
+//     const onSuccessMock = jest.fn();
+
+//     render(<Form />);
+
+//     // Remplissez les champs du formulaire
+//     waitFor(() => {
+//       const name = screen.getByTestId("name");
+//       fireEvent.change(name, { target: { value: "John" } });
+//       const surName = screen.getByTestId("surname");
+//       fireEvent.change(surName, { target: { value: "Doe" } });
+//       const email = screen.getByTestId("email");
+//       fireEvent.change(email, {
+//         target: { value: "john.doe@example.com" },
+//       });
+//       const userMessage = screen.getByTestId("userMessage");
+//       fireEvent.change(userMessage, {
+//         target: { value: "Hello, this is a test message" },
+//       });
+//       // Soumettez le formulaire
+//       fireEvent.click(getByText("Envoyer"));
+//     });
+
+//     // Attendez que le formulaire soit soumis avec succès
+//     waitFor(() => {
+//       expect(onSuccessMock).toHaveBeenCalled();
+//     });
+//   });

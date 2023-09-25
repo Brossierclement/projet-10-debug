@@ -15,11 +15,7 @@ const Select = ({
 }) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
-  // const changeValue = (newValue) => {
-  //   onChange();
-  //   setValue(newValue);
-  //   setCollapsed(newValue);
-  // };
+
   const changeValue = (newValue) => {
     setValue(newValue); // Mettre à jour la valeur sélectionnée en premier
     setCollapsed(true); // Fermer la liste déroulante

@@ -20,7 +20,7 @@ const Slider = () => {
           prevIndex < sliderItems.length - 1 ? prevIndex + 1 : 0
         );
       }
-    }, 7000);
+    }, 10000);
 
     return () => {
       clearInterval(timer);
@@ -66,23 +66,25 @@ const Slider = () => {
               </div>
             </div>
           </div>
-          <div className="SlideCard__paginationContainer">
-            <div className="SlideCard__pagination">
-              {sliderItems.map((item) => (
-                <input
-                  key={item.id}
-                  type="radio"
-                  name="radio-button"
-                  checked={item.id === sliderPosition}
-                  onChange={() => goToSlide(item.id)}
-                  onClick={() => goToSlide(item.id)}
-                  // className={item.id === sliderPosition ? "selected" : ""}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       ))}
+      {/* Je sors la pagination de la boucle sinon 3x3 input au lieu de 3x1 */}
+      {sliderItems && (
+        <div className="SlideCard__paginationContainer">
+          <div className="SlideCard__pagination">
+            {sliderItems.map((item) => (
+              <input
+                key={item.id}
+                type="radio"
+                name="radio-button"
+                checked={item.id === sliderPosition}
+                onChange={() => goToSlide(item.id)}
+                className="custom-radio-input"
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

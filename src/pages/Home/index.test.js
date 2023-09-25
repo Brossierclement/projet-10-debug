@@ -1,6 +1,6 @@
 import {
   fireEvent,
-  getByTestId,
+  // getByTestId,
   render,
   screen,
   waitFor,
@@ -34,10 +34,7 @@ describe("When Form is created", () => {
 });
 
 describe("When a page is created", () => {
-  // it("a list of events is displayed", () => {
-  // });
-
-  // - - - - - - - - - -
+  // - - - - - - - - - - Fonctionnel
 
   it("a list a people is displayed", async () => {
     render(<Page />);
@@ -45,11 +42,10 @@ describe("When a page is created", () => {
     await waitFor(() => {
       const parent = screen.getByTestId("peopleListContainer");
       expect(parent.children.length).toEqual(6);
-      // boucle sur les enfants pour vérifier s'ils ont tous la bonne classe
     });
   });
 
-  // - - - - - - - - - -
+  // - - - - - - - - - - Fonctionnel
 
   it("a footer is displayed", () => {
     render(<Home />);
@@ -57,7 +53,7 @@ describe("When a page is created", () => {
     expect(networks.children).toHaveLength(4);
   });
 
-  // - - - - - - - - - -
+  // - - - - - - - - - - Fonctionnel
 
   it("an event card, with the last event, is displayed", () => {
     const lastEvent = {

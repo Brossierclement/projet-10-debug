@@ -141,14 +141,16 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {ready ? (
-            <EventCard
-              data-testid="last-event-card"
-              imageSrc={last?.cover}
-              title={last?.title}
-              date={new Date(last?.date)}
-              small
-              label="boom"
-            />
+            <a href="#nos-realisations">
+              <EventCard
+                data-testid="last-event-card"
+                imageSrc={last?.cover}
+                title={last?.title}
+                date={new Date(last?.date)}
+                small
+                label="boom"
+              />
+            </a>
           ) : (
             <p>Chargement...</p>
           )}

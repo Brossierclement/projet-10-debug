@@ -20,5 +20,6 @@ module.exports = {
     "react/function-component-definition": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "react/self-closing-comp": "off",
   },
 };
