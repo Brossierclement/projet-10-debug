@@ -10,6 +10,7 @@ describe("When Menu is created", () => {
     await screen.findByText("Contact");
   });
 
+  // - - - - - Scénario n°1 - - - - -
   describe("and a click is triggered on contact button", () => {
     it("document location  href change", async () => {
       render(<Menu />);

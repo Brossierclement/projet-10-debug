@@ -34,7 +34,7 @@ describe("When Form is created", () => {
 });
 
 describe("When a page is created", () => {
-  // - - - - - - - - - - Fonctionnel
+  // - - - - - Fonctionnel - - - - -
 
   it("a list a people is displayed", async () => {
     render(<Page />);
@@ -45,7 +45,7 @@ describe("When a page is created", () => {
     });
   });
 
-  // - - - - - - - - - - Fonctionnel
+  // - - - - - Fonctionnel - - - - -
 
   it("a footer is displayed", () => {
     render(<Home />);
@@ -53,7 +53,8 @@ describe("When a page is created", () => {
     expect(networks.children).toHaveLength(4);
   });
 
-  // - - - - - - - - - - Fonctionnel
+  // - - - - - Fonctionnel - - - - -
+  // - - - - - Scénario n°7 - - - - -
 
   it("an event card, with the last event, is displayed", () => {
     const lastEvent = {
@@ -67,6 +68,20 @@ describe("When a page is created", () => {
     waitFor(() => {
       const lastEventCardElement = screen.getByTestId("last-event-card");
       expect(lastEventCardElement).toBeInTheDocument();
+    });
+  });
+
+  // - - - - - Scénario 8 - - - - -
+  it("should navigate to the correct section when link is clicked", () => {
+    render(<Page />);
+    waitFor(() => {
+      // Clique sur le lien avec le texte "#nos-realisations"
+      const link = screen.getByText("#nos-realisations");
+      link.click();
+
+      // Vérifie que la section avec l'id "nos-realisations" est maintenant visible
+      const section = screen.getByTestId("nos-realisations");
+      expect(section).toBeVisible();
     });
   });
 });

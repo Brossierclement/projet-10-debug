@@ -2,6 +2,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import Select from "./index";
 
 describe("When a select is created", () => {
+  // - - - - - Scénario n°3 - - - - -
+
   it("a list of choices is displayed", () => {
     render(<Select selection={["value1", "value2"]} />);
     const selectElement = screen.getByTestId("select-testid");

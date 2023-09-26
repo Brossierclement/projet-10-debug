@@ -141,7 +141,7 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {ready ? (
-            <a href="#nos-realisations">
+            <a data-testid="linkLastRealisation" href="#nos-realisations">
               <EventCard
                 data-testid="last-event-card"
                 imageSrc={last?.cover}

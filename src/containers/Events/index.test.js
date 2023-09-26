@@ -59,6 +59,7 @@ describe("When Events is created", () => {
     });
   });
   describe("and we select a category", () => {
+    // - - - - - Scénario n°4 - - - - -
     it.only("an filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
@@ -87,6 +88,7 @@ describe("When Events is created", () => {
     });
   });
 
+  // - - - - - Scénario n°5 - - - - -
   describe("and we click on an event", () => {
     it("the event detail is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);

@@ -16,6 +16,7 @@ describe("When Events is created", () => {
     await screen.findByText("Personel / Entreprise");
   });
 
+  // - - - - - Scnéario n°6 - - - - -
   describe("and a click is triggered on the submit button", () => {
     it("the success action is called", async () => {
       const onSuccess = jest.fn();

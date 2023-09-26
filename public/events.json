@@ -290,6 +290,7 @@
         {
             "id": 0,
             "inputId" : "a",
+            "alt" : "world",
             "title": "World economic forum",
             "description": "Oeuvre à la coopération entre le secteur public et le privé.",
             "date": "2022-01-29T20:28:45.744Z",
@@ -298,6 +299,7 @@
         {
             "id": 1,
             "inputId" : "b",
+            "alt" : "nordic",
             "title": "Nordic design week",
             "description": "Conférences sur le design de demain dans le digital",
             "date": "2022-03-29T20:28:45.744Z",
@@ -306,6 +308,7 @@
         {
             "id": 2,
             "inputId" : "c",
+            "alt" : "Sneakercraze",
             "title": "Sneakercraze market",
             "description": "Rencontres de spécialistes des Sneakers Européens.",
             "date": "2022-05-29T20:28:45.744Z",

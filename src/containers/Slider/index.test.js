@@ -42,3 +42,47 @@ describe("When slider is created", () => {
     );
   });
 });
+
+// - - - - - Scénario n°2 - - - - -
+
+describe("Slider component", () => {
+  it("devrait correspondre aux boutons radio", () => {
+    const { getByRole } = render(<Slider />);
+    const sliderItems = [
+      {
+        id: 0,
+        inputId: "a",
+        alt: "world",
+      },
+      {
+        id: 1,
+        inputId: "b",
+        alt: "nordic",
+      },
+      {
+        id: 2,
+        inputId: "c",
+        alt: "Sneakercraze",
+      },
+    ];
+
+    // Récupère les boutons radio
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    // Vérification des boutons radio par rapport aux slides.
+    radioButtons.forEach((radioButton, index) => {
+      fireEvent.click(radioButton); // Clique sur le bouton radio
+      const slideAlt = sliderItems[index].alt;
+      const slide = getByRole("img", { name: new RegExp(slideAlt, "i") });
+
+      // Regarde si la slide correspondante est visible
+      if (index === 0) {
+        // Si c'est le premier bouton radio, la première slide doit être visible
+        expect(slide).toBeVisible();
+      } else {
+        // Les autres diapositives ne doivent pas être visibles
+        expect(slide).not.toBeVisible();
+      }
+    });
+  });
+});

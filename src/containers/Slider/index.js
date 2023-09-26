@@ -56,8 +56,9 @@ const Slider = () => {
             className={`SlideCard SlideCard--${
               element.id === sliderPosition ? "display" : "hide"
             }`}
+            data-testid={`slide-${element.id}`}
           >
-            <img src={element.cover} alt="forum" />
+            <img src={element.cover} alt={element.alt} />
             <div className="SlideCard__descriptionContainer">
               <div className="SlideCard__description">
                 <h3>{element.title}</h3>
@@ -72,14 +73,16 @@ const Slider = () => {
       {sliderItems && (
         <div className="SlideCard__paginationContainer">
           <div className="SlideCard__pagination">
-            {sliderItems.map((item) => (
+            {sliderItems.map((item, index) => (
               <input
                 key={item.id}
                 type="radio"
                 name="radio-button"
+                value={index}
                 checked={item.id === sliderPosition}
                 onChange={() => goToSlide(item.id)}
                 className="custom-radio-input"
+                data-testid={`radio-button-${index}`}
               />
             ))}
           </div>
